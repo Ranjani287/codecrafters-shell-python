@@ -1,3 +1,4 @@
+import shutil
 import sys
 
 
@@ -7,8 +8,11 @@ def main():
         sys.stdout.write("$ ")
         sys.stdout.flush()
         input_command = input()
-        if input_command.__contains__("type") and (input_command.__contains__("echo") or input_command.__contains__("exit") or input_command.__contains__("type type")):
-            print(input_command[5:]+" is a shell builtin")
+        cmd=input_command.split()[5:]
+        if input_command.__contains__("type") and cmd in ["type", "echo", "exit"]:
+            print(cmd+" is a shell builtin")
+        elif path:= shutil.which(cmd):
+            print(cmd+" is "+path) 
         elif input_command == "exit":
             break
         elif input_command.__contains__("echo"):
