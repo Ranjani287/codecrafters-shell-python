@@ -7,12 +7,14 @@ def main():
         sys.stdout.write("$ ")
         sys.stdout.flush()
         input_command = input()
-        if input_command == "exit":
+        if input_command.__contains__("type"):
+            print(input_command[5:]+": is a shell builtin")
+        elif input_command == "exit":
             break
         elif input_command.__contains__("echo"):
             print(input_command[5:])
         else:            
-         print(input_command + ": command not found")
+         print(input_command + ": not found")
 
 
 
