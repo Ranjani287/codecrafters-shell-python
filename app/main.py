@@ -8,10 +8,10 @@ def main():
         sys.stdout.write("$ ")
         sys.stdout.flush()
         input_command = input()
-        cmd=input_command.split()[5:]
+        cmd=input_command[5:]
         if input_command.__contains__("type") and cmd in ["type", "echo", "exit"]:
             print(cmd+" is a shell builtin")
-        elif path:= shutil.which(cmd):
+        elif path := shutil.which(cmd):
             print(cmd+" is "+path) 
         elif input_command == "exit":
             break
