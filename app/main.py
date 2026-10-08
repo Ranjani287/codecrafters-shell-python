@@ -13,8 +13,11 @@ def main():
             break
         elif input_command.__contains__("echo"):
             print(input_command[5:])
-        else:            
-         print(input_command + ": not found")
+        else:
+         if input_command.__contains__("type"):
+            print(input_command[5:] + ": not found")
+         else:        
+            print(input_command + ": not found")
 
 
 
