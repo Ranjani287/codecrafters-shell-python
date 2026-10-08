@@ -3,10 +3,14 @@ import sys
 
 def main():
     # TODO: Uncomment the code below to pass the first stage
-    sys.stdout.write("$ ")
-    input_command = input()
-    print(input_command + ": command not found")
-    
+    while True:
+        sys.stdout.write("$ ")
+        sys.stdout.flush()
+        input_command = input()
+        if input_command == "exit":
+            break
+        print(input_command + ": command not found")
+
 
 
 if __name__ == "__main__":
