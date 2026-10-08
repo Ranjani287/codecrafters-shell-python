@@ -5,7 +5,7 @@ def main():
     # TODO: Uncomment the code below to pass the first stage
     sys.stdout.write("$ ")
     input_command = input()
-    print(input_command + ": Command not found")
+    print(input_command + ": command not found")
     
 
 
