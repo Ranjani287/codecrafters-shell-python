@@ -9,7 +9,10 @@ def main():
         input_command = input()
         if input_command == "exit":
             break
-        print(input_command + ": command not found")
+        if input_command.__contains__("echo"):
+            print(input_command[5:])
+        # else:            
+        #  print(input_command + ": command not found")
 
 
 
