@@ -8,7 +8,7 @@ def main():
         sys.stdout.flush()
         input_command = input()
         if input_command.__contains__("type"):
-            print(input_command[5:]+": is a shell builtin")
+            print(input_command[5:]+" is a shell builtin")
         elif input_command == "exit":
             break
         elif input_command.__contains__("echo"):
