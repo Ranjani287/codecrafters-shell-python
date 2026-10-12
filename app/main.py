@@ -35,14 +35,17 @@ while True:
             if path == "~":
                 os.chdir(os.environ.get("HOME"))
             if path:
-                os.chdir(args[1])
+                os.chdir(path)
             else:
-                print("cd: missing argument")
-        except (IndexError, FileNotFoundError):
-            print(f"cd: {args[1] if len(args) > 1 else ''}: No such file or directory")
+                print("cd: HOME not set")
+
+        except IndexError:
+            print("cd: missing directory")
+        except OSError:
+            print(f"cd: {args[1]}: No such file or directory")
 
     elif path := shutil.which(cmd):
-        subprocess.run(args)
+            subprocess.run(args)
 
     else:
         print(f"{cmd}: command not found")
