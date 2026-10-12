@@ -1,29 +1,39 @@
-import shutil
+import os
 import sys
+import shutil
 import subprocess
 
-def main():
-    # TODO: Uncomment the code below to pass the first stage
-    while True:
-        sys.stdout.write("$ ")
-        sys.stdout.flush()
-        input_command = input()
-        cmd=input_command[5:]
-        if input_command.__contains__("type") and cmd in ["type", "echo", "exit"]:
-            print(cmd+" is a shell builtin")
-        elif path := shutil.which(cmd):
-             subprocess.run(input_command.split())
-        elif input_command == "exit":
-            break
-        elif input_command.__contains__("echo"):
-            print(input_command[5:])
+while True:
+    command = input("$ ")
+
+    if not command:
+        continue
+
+    args = command.split()
+    cmd = args[0]
+
+    if cmd == "exit":
+        break
+
+    elif cmd == "type":
+        if args[1] in ["exit", "echo", "type"]:
+            print(f"{args[1]} is a shell builtin")
+        elif path := shutil.which(args[1]):
+            print(f"{args[1]} is {path}")
         else:
-         if input_command.__contains__("type"):
-            print(input_command[5:] + ": not found")
-         else:        
-            print(input_command + ": not found")
+            print(f"{args[1]}: not found")
 
+    elif cmd == "echo":
+        print(" ".join(args[1:]))
 
+    elif cmd == "cd":
+        try:
+            os.chdir(args[1])
+        except (IndexError, FileNotFoundError):
+            print(f"cd: {args[1] if len(args) > 1 else ''}: No such file or directory")
 
-if __name__ == "__main__":
-    main()
+    elif path := shutil.which(cmd):
+        subprocess.run(args)
+
+    else:
+        print(f"{cmd}: command not found")
