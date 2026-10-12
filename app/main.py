@@ -33,7 +33,7 @@ while True:
         try:
             path= args[1]
             if path == "~":
-                os.chdir(os.environ.get("HOME"))
+                path = os.environ.get("HOME")
             if path:
                 os.chdir(path)
             else:
