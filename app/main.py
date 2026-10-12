@@ -12,7 +12,7 @@ def main():
         if input_command.__contains__("type") and cmd in ["type", "echo", "exit"]:
             print(cmd+" is a shell builtin")
         elif path := shutil.which(cmd):
-             subprocess.run([path] + input_command.split()[1:])
+             subprocess.run([path] + input_command.split())
         elif input_command == "exit":
             break
         elif input_command.__contains__("echo"):
