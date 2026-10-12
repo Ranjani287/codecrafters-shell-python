@@ -26,6 +26,9 @@ while True:
     elif cmd == "echo":
         print(" ".join(args[1:]))
 
+    elif cmd == "pwd":
+        print(os.getcwd())
+
     elif cmd == "cd":
         try:
             os.chdir(args[1])
