@@ -31,6 +31,9 @@ while True:
 
     elif cmd == "cd":
         try:
+            path= args[1]
+            if path == "~":
+                os.chdir(os.environ.get("HOME"))
             os.chdir(args[1])
         except (IndexError, FileNotFoundError):
             print(f"cd: {args[1] if len(args) > 1 else ''}: No such file or directory")
