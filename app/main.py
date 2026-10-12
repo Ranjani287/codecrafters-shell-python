@@ -16,7 +16,7 @@ while True:
         break
 
     elif cmd == "type":
-        if args[1] in ["exit", "echo", "type"]:
+        if args[1] in ["exit", "echo", "type", "pwd", "cd"]:
             print(f"{args[1]} is a shell builtin")
         elif path := shutil.which(args[1]):
             print(f"{args[1]} is {path}")
